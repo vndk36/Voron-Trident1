@@ -7,18 +7,18 @@ cd ~ && git clone https://github.com/dw-0/kiauh.git
 ```
 
 # Katapult
-
+```
 git clone https://github.com/Arksine/katapult
 cd katapult
 make menuconfig
 make
-
+```
 # Cartographer
-
+```
 cd ~
 git clone https://github.com/Cartographer3D/cartographer-klipper.git
 ./cartographer-klipper/install.sh
-
+```
 ## moonraker
 
 [update_manager cartographer]
@@ -32,9 +32,9 @@ info_tags:
   desc=Cartographer Probe
 
 #  Autotune TMC
-
+```
 wget -O - https://raw.githubusercontent.com/andrewmcgr/klipper_tmc_autotune/main/install.sh | bash
-
+```
 ## moonraker
 [update_manager klipper_tmc_autotune]
 type: git_repo
@@ -47,16 +47,16 @@ install_script: install.sh
 
 
 # Shaktune
-
+```
 wget -O - https://raw.githubusercontent.com/Frix-x/klippain-shaketune/main/install.sh | bash
-
+```
 # Crownest
-
+```
 cd ~
 git clone https://github.com/mainsail-crew/crowsnest.git
 cd ~/crowsnest
 sudo make install
-
+```
 ## moonraker
 
 [update_manager crowsnest]
