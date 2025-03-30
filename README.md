@@ -20,7 +20,7 @@ git clone https://github.com/Cartographer3D/cartographer-klipper.git
 ./cartographer-klipper/install.sh
 ```
 ## moonraker
-
+```
 [update_manager cartographer]
 type: git_repo
 path: ~/cartographer-klipper
@@ -30,12 +30,13 @@ is_system_service: False
 managed_services: klipper
 info_tags:
   desc=Cartographer Probe
-
+```
 #  Autotune TMC
 ```
 wget -O - https://raw.githubusercontent.com/andrewmcgr/klipper_tmc_autotune/main/install.sh | bash
 ```
 ## moonraker
+```
 [update_manager klipper_tmc_autotune]
 type: git_repo
 channel: dev
@@ -44,7 +45,7 @@ origin: https://github.com/andrewmcgr/klipper_tmc_autotune.git
 managed_services: klipper
 primary_branch: main
 install_script: install.sh
-
+```
 
 # Shaktune
 ```
@@ -58,10 +59,10 @@ cd ~/crowsnest
 sudo make install
 ```
 ## moonraker
-
+```
 [update_manager crowsnest]
 type: git_repo
 path: ~/crowsnest
 origin: https://github.com/mainsail-crew/crowsnest.git
 install_script: tools/pkglist.sh
-
+```
