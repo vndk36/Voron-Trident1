@@ -84,6 +84,10 @@ sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam1.bin -O /boo
 
 Then edit the config.txt in the SD card root part
 
+Then do all of this as well to get the can to work:
+
+https://canbus.esoterical.online/Getting_Started.html
+
 
 
 # Old method or with a more rugulare debian os
