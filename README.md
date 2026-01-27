@@ -72,6 +72,17 @@ make menuconfig
 make
 ```
 
+# BTT M5P
+Commands specific to the M5P board with a CM4
+
+Enable the screen on the correct port:
+
+sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam1.bin -O /boot/firmware/dt-blob.bin
+
+Then edit the config.txt in the SD card root part
+
+
+
 # Old method or with a more rugulare debian os
 # Cartographer
 ```
