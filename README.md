@@ -1,4 +1,7 @@
 # Mainsail OS install
+
+MAINSAIL DIDN?T WORK PROPPERLLY WILL TEST AGAIN WITH FLUIDD
+
 Fresh install of Mainsail OS 2.2.2
 
 From this update, all the plugins and fix all the errors in the update tab of the mainsail plugin.
