@@ -2,7 +2,7 @@
 
 Fresh install of the OS using Pi imager.
 
-Right now installed Trixie Lite 64 bits OS
+Right now installed Bookworm Lite 64 bits OS
 
 Hardware wise the setup is a Voron trident printer, BTT Manta M5P board with a PI CM4 lite, CAN toolhead board BTT EBB 36 v1.2 directly wired on the Manta can port, Cartographer V3, BTT tft 50 screen.
 
@@ -26,7 +26,7 @@ Edit it and add at the end:
 
 ```
 dtoverlay=dwc2,dr_mode=host
-dtoverlay=vc4-kms-dsi-generic 
+dtoverlay=vc4-kms-dsi-7inch 
 ```
 
 ## Kiauh
@@ -43,6 +43,24 @@ This will let install:
 - Fluidd
 - Klipper screen
 - Extension / Autotune TMC
+  
+## CAn bus
+Then do all of this as well to get the CAN BUS to work:
+
+https://canbus.esoterical.online/Getting_Started.html
+
+Summary of the command to preform to get Can working again on a previously working setup
+```
+sudo systemctl enable systemd-networkd
+sudo systemctl start systemd-networkd
+systemctl | grep systemd-networkd
+sudo systemctl disable systemd-networkd-wait-online.service
+echo -e 'SUBSYSTEM=="net", ACTION=="change|add", KERNEL=="can*"  ATTR{tx_queue_len}="128"' | sudo tee /etc/udev/rules.d/10-can.rules > /dev/null
+cat /etc/udev/rules.d/10-can.rules
+echo -e "[Match]\nName=can*\n\n[CAN]\nBitRate=1M\n\n[Link]\nRequiredForOnline=no" | sudo tee /etc/systemd/network/25-can.network > /dev/null
+cat /etc/systemd/network/25-can.network
+sudo reboot now
+```
 
 ## Katapult
 ```
@@ -88,22 +106,7 @@ sudo wget https://datasheets.raspberrypi.com/cmio/dt-blob-disp1-cam1.bin -O /boo
 
 Then edit the config.txt in the SD card root part
 
-Then do all of this as well to get the CAN BUS to work:
 
-https://canbus.esoterical.online/Getting_Started.html
-
-Summary of the command to preform to get Can working again on a previously working setup
-```
-sudo systemctl enable systemd-networkd
-sudo systemctl start systemd-networkd
-systemctl | grep systemd-networkd
-sudo systemctl disable systemd-networkd-wait-online.service
-echo -e 'SUBSYSTEM=="net", ACTION=="change|add", KERNEL=="can*"  ATTR{tx_queue_len}="128"' | sudo tee /etc/udev/rules.d/10-can.rules > /dev/null
-cat /etc/udev/rules.d/10-can.rules
-echo -e "[Match]\nName=can*\n\n[CAN]\nBitRate=1M\n\n[Link]\nRequiredForOnline=no" | sudo tee /etc/systemd/network/25-can.network > /dev/null
-cat /etc/systemd/network/25-can.network
-sudo reboot now
-```
 
 
 
