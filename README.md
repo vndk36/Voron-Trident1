@@ -43,6 +43,7 @@ This will let install:
 - Fluidd
 - Klipper screen
 - Extension / Autotune TMC
+- Extension / Octoprint everywhere
   
 ## CAn bus
 Then do all of this as well to get the CAN BUS to work:
@@ -72,14 +73,26 @@ make
 
 ## Cartographer
 Then, install cartographer code:
+https://docs.cartographer3d.com/cartographer-probe/installation-and-setup/software-configuration/klipper-setup
 ```
 curl -s -L https://raw.githubusercontent.com/Cartographer3D/cartographer3d-plugin/refs/heads/main/scripts/install.sh | bash -s -- --klipper ~/klipper --klippy-env ~/klippy-env
+cd ~
+git clone https://github.com/Cartographer3D/cartographer_firmware.git
 ```
 
 ## Shaktune
 And finally install shaketune to be able to perform some input shaper graphs:
 ```
 wget -O - https://raw.githubusercontent.com/Frix-x/klippain-shaketune/main/install.sh | bash
+```
+
+## Crowsnest
+```
+sudo apt-get update && sudo apt-get install git -y
+cd ~
+git clone https://github.com/mainsail-crew/crowsnest.git
+cd ~/crowsnest
+sudo make install
 ```
 
 
@@ -94,6 +107,23 @@ project_name: cartographer3d-plugin
 is_system_service: False
 managed_services: klipper
 info_tags: desc=Cartographer Plugin
+
+[update_manager Cartographer Firmware]
+type: git_repo
+path: ~/cartographer_firmware
+is_system_service: False
+origin: https://github.com/Cartographer3D/cartographer_firmware.git
+primary_branch: main
+
+[update_manager crowsnest]
+type: git_repo
+path: ~/crowsnest
+origin: https://github.com/mainsail-crew/crowsnest.git
+primary_branch: v5
+managed_services: crowsnest
+system_dependencies: system-dependencies.json
+virtualenv: ~/crowsnest-env
+requirements: requirements.txt
 ```
 
 
