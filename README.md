@@ -45,7 +45,7 @@ This will let install:
 - Extension / Autotune TMC
 - Extension / Octoprint everywhere
   
-## CAn bus
+## CAN bus
 Then do all of this as well to get the CAN BUS to work:
 
 https://canbus.esoterical.online/Getting_Started.html
